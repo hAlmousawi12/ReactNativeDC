@@ -1,20 +1,64 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text } from "react-native";
+import { ScrollView, SafeAreaView, SafeAreaViewBase } from "react-native";
 import styled from "styled-components";
 import Card from "./components/Card";
+import { Icon } from "expo";
+import { Ionicons } from "@expo/vector-icons";
+import { NotificationIcon } from "./components/Icons";
+import Logo from "./components/Logo";
 
 export default function App() {
   return (
     <Container>
-      <TitleBar>
-        <Avatar source={require("./assets/avatar.png")} />
-        <Title>Welcome back,</Title>
-        <Name>Hussain</Name>
-        <StatusBar style="auto" />
-      </TitleBar>
-      <SubTitle>Continue Learning</SubTitle>
-      <Card />
+      <SafeAreaView>
+        <ScrollView>
+          <TitleBar>
+            <Avatar source={require("./assets/avatar.png")} />
+            <Title>Welcome back,</Title>
+            <Name>Hussain</Name>
+            <NotificationIcon
+              style={{ position: "absolute", right: 20, top: 5 }}
+            />
+          </TitleBar>
+          <ScrollView
+            style={{
+              flexDirection: "row",
+              padding: 20,
+              paddingLeft: 12,
+              paddingTop: 30,
+            }}
+            horizontal={true}
+          >
+            <Logo
+              Image={require("./assets/logo-framerx.png")}
+              Text="Framer X"
+            />
+            <Logo Image={require("./assets/logo-figma.png")} Text="Figma" />
+          </ScrollView>
+          <SubTitle>Continue Learning</SubTitle>
+          <ScrollView
+            horizontal={true}
+            style={{ paddingBottom: 30 }}
+            showsVerticalScrollIndicator={false}
+          >
+            <Card
+              Title="Styled Components"
+              Image={require("./assets/background2.jpg")}
+              Caption="React Native"
+              Logo={require("./assets/logo-react.png")}
+              SubTitle="5 of 12 sections"
+            />
+            <Card
+              Title="Styled Components 2"
+              Image={require("./assets/background1.jpg")}
+              Caption="React Native"
+              Logo={require("./assets/logo-react.png")}
+              SubTitle="5 of 12 sections"
+            />
+          </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     </Container>
   );
 }
@@ -24,7 +68,7 @@ const SubTitle = styled.Text`
   font-weight: 600;
   font-size: 15px;
   margin-left: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
   text-transform: uppercase;
 `;
 
